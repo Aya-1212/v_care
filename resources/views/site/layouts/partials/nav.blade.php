@@ -13,7 +13,7 @@
             <div class="d-flex gap-3 flex-wrap justify-content-center" role="group">
                 <a type="button" class="btn btn-outline-light navigation--button" href="{{ route('home') }}">Home</a>
                 <a type="button" class="btn btn-outline-light navigation--button"
-                    href="{{ route('majors') }}">majors</a>
+                    href="{{ route('majors.index') }}">majors</a>
                 <a type="button" class="btn btn-outline-light navigation--button"
                     href="{{ route("doctors.index") }}">Doctors</a>
                 <a type="button" class="btn btn-outline-light navigation--button" href="{{ route('login') }}">login</a>

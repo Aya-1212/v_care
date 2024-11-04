@@ -1,4 +1,4 @@
-@extends('web.site.app')
+@extends('site.app')
 
 @section('title',"Home")
     
@@ -105,7 +105,7 @@
                     <div class="card-body d-flex flex-column gap-1 justify-content-center">
                         <h4 class="card-title fw-bold text-center">Doctor Name</h4>
                         <h6 class="card-title fw-bold text-center">Major</h6>
-                        <a href="{{ route('doctors.doctor') }}" class="btn btn-outline-primary card-button">Book an
+                        <a href="{{ route('appointments.index') }}" class="btn btn-outline-primary card-button">Book an
                             appointment</a>
                     </div>
                 </div>
@@ -117,7 +117,7 @@
                     <div class="card-body d-flex flex-column gap-1 justify-content-center">
                         <h4 class="card-title fw-bold text-center">Doctor Name</h4>
                         <h6 class="card-title fw-bold text-center">Major</h6>
-                        <a href="{{ route('doctors.doctor') }}" class="btn btn-outline-primary card-button">Book an
+                        <a href="{{ route('appointments.index') }}" class="btn btn-outline-primary card-button">Book an
                             appointment</a>
                     </div>
                 </div>
@@ -141,7 +141,7 @@
                     <div class="card-body d-flex flex-column gap-1 justify-content-center">
                         <h4 class="card-title fw-bold text-center">Doctor Name</h4>
                         <h6 class="card-title fw-bold text-center">Major</h6>
-                        <a href="{{ route('doctors.doctor') }}" class="btn btn-outline-primary card-button">Book an
+                        <a href="{{ route('appointments.index') }}" class="btn btn-outline-primary card-button">Book an
                             appointment</a>
                     </div>
                 </div>
@@ -153,7 +153,7 @@
                     <div class="card-body d-flex flex-column gap-1 justify-content-center">
                         <h4 class="card-title fw-bold text-center">Doctor Name</h4>
                         <h6 class="card-title fw-bold text-center">Major</h6>
-                        <a href="{{ route('doctors.doctor') }}" class="btn btn-outline-primary card-button">Book an
+                        <a href="{{ route('appointments.index') }}" class="btn btn-outline-primary card-button">Book an
                             appointment</a>
                     </div>
                 </div>
@@ -165,7 +165,7 @@
                     <div class="card-body d-flex flex-column gap-1 justify-content-center">
                         <h4 class="card-title fw-bold text-center">Doctor Name</h4>
                         <h6 class="card-title fw-bold text-center">Major</h6>
-                        <a href="{{ route('doctors.doctor') }}" class="btn btn-outline-primary card-button">Book an
+                        <a href="{{ route('appointments.index') }}" class="btn btn-outline-primary card-button">Book an
                             appointment</a>
                     </div>
                 </div>
@@ -177,7 +177,7 @@
                     <div class="card-body d-flex flex-column gap-1 justify-content-center">
                         <h4 class="card-title fw-bold text-center">Doctor Name</h4>
                         <h6 class="card-title fw-bold text-center">Major</h6>
-                        <a href="{{ route('doctors.doctor') }}" class="btn btn-outline-primary card-button">Book an
+                        <a href="{{ route('appointments.index') }}" class="btn btn-outline-primary card-button">Book an
                             appointment</a>
                     </div>
                 </div>
@@ -189,7 +189,7 @@
                     <div class="card-body d-flex flex-column gap-1 justify-content-center">
                         <h4 class="card-title fw-bold text-center">Doctor Name</h4>
                         <h6 class="card-title fw-bold text-center">Major</h6>
-                        <a href="{{ route('doctors.doctor') }}" class="btn btn-outline-primary card-button">Book an
+                        <a href="{{ route('appointments.index') }}" class="btn btn-outline-primary card-button">Book an
                             appointment</a>
                     </div>
                 </div>

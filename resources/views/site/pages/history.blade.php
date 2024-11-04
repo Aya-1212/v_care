@@ -1,4 +1,4 @@
-@extends('web.site.app')
+@extends('site.app')
 @section('title','History')
 
 @section('content')

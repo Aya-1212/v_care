@@ -1,13 +1,13 @@
-@include('web.site.layouts.head')
+@include('site.layouts.head')
 
 <body>
     <div class="page-wrapper">
-@include('web.site.layouts.partials.nav')
+@include('site.layouts.partials.nav')
 @stack('card details')
         <div class="container">
            @yield('content')
         </div>
     </div>
-@include('web.site.layouts.footer')
+@include('site.layouts.footer')
 </body>
 </html>

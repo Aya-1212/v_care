@@ -15,11 +15,11 @@
             <h1 class="h1">Links</h1>
             <div class="links d-flex gap-2 flex-wrap">
                 <a href="{{ route('home') }}" class="link text-white">Home</a>
-                <a href="{{ route('majors') }}" class="link text-white">Majors</a>
+                <a href="{{ route('majors.index') }}" class="link text-white">Majors</a>
                 <a href="./doctors/index.html" class="link text-white">Doctors</a>
                 <a href="{{ route('login') }}" class="link text-white">Login</a>
                 <a href="{{ route('register') }}" class="link text-white">Register</a>
-                <a href="{{ route('contact') }}" class="link text-white">Contact</a>
+                <a href="{{ route('contact.index') }}" class="link text-white">Contact</a>
             </div>
         </div>
     </div>
