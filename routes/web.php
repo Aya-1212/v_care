@@ -19,10 +19,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/majors',[ MajorController::class, 'index'])->name('majors.index');
-Route::get('/contact',[ ContactController::class ,'index'])->name('contact.index');
+Route::get('/majors', [MajorController::class, 'index'])->name('majors.index');
+Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
+Route::post('/contact',[ContactController::class,'store'])->name('contact.store');
 Route::view('history', 'site.pages.history')->name('history');
 Route::view('login', 'site.pages.login')->name('login');
 Route::view('register', 'site.pages.register')->name('register');
-Route::get('/doctors',[DoctorController::class ,'index'])->name('doctors.index');
-Route::get('/appointment', [ AppointmentController::class ,'index'])->name('appointments.index');
+Route::get('/doctors', [DoctorController::class, 'index'])->name('doctors.index');
+Route::get('/appointment', [AppointmentController::class, 'index'])->name('appointments.index');
+
