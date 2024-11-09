@@ -28,3 +28,4 @@ Route::view('register', 'site.pages.register')->name('register');
 Route::get('/doctors', [DoctorController::class, 'index'])->name('doctors.index');
 Route::get('/appointment', [AppointmentController::class, 'index'])->name('appointments.index');
 
+require_once('admin.php');

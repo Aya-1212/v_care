@@ -3,6 +3,9 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Doctor;
+use App\Models\Major;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -18,5 +21,8 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+        Major::factory(100)->create();
+        Doctor::factory(100)->create();
     }
 }
