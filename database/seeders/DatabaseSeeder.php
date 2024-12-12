@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\Admin;
 use App\Models\Doctor;
 use App\Models\Major;
 use Illuminate\Database\Seeder;
@@ -24,5 +25,6 @@ class DatabaseSeeder extends Seeder
 
         Major::factory(100)->create();
         Doctor::factory(100)->create();
+        Admin::factory(10)->create();
     }
 }

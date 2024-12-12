@@ -15,16 +15,33 @@
         </div>
     </div> --}}
     <div class="majors-grid">
-        @foreach ($majors as $major)
+        @forelse ($majors as $major)
             <div class="card p-2" style="width: 18rem;">
-                <img src="{{ asset('uploads/majors/' . $major->image) }}" class="card-img-top rounded-circle card-image-circle"
-                    alt="major">
+                <img src="{{ asset('uploads/majors/' . $major->image) }}"
+                    class="card-img-top rounded-circle card-image-circle" alt="major">
                 <div class="card-body d-flex flex-column gap-1 justify-content-center">
                     <h4 class="card-title fw-bold text-center">{{ $major->title }}</h4>
-                    <a href="{{ route('doctors.index') }}" class="btn btn-outline-primary card-button">Browse Doctors</a>
+                    <a href="{{ route('majors.doctors', $major->id) }}" class="btn btn-outline-primary card-button">Browse
+                        Doctors</a>
                 </div>
             </div>
-        @endforeach
+        @empty
+            <div class="container">
+                <div class="container-fluid bg-light py-5">
+                    <div class="col-md-6 m-auto text-center">
+                        <section class="content-header">
+                            <div class="container-fluid">
+                                <div class="row mb-2">
+                                    <div class="col-sm-6">
+                                        <h4>No Majors Until Now</h4>
+                                    </div>
+                                </div>
+                            </div><!-- /.container-fluid -->
+                        </section>
+                    </div>
+                </div>
+            </div>
+        @endforelse
     </div>
     <div class="py-2">{{ $majors->links() }}</div>
 @endsection

@@ -5,6 +5,7 @@ use App\Http\Controllers\Site\ContactController;
 use App\Http\Controllers\Site\DoctorController;
 use App\Http\Controllers\Site\HomeController;
 use App\Http\Controllers\Site\MajorController;
+use App\Models\Major;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,14 +19,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/majors', [MajorController::class, 'index'])->name('majors.index');
+Route::middleware('auth')->group(function () {
+    Route::get('/appointment', [AppointmentController::class, 'index'])->name('appointments.index');
+    Route::view('history', 'site.pages.history')->name(name: 'history');
+    Route::get('/doctors/{doctor}/appointments', [AppointmentController::class, 'show'])->name('doctors.appointments');
+    Route::post('/appointments/add', action: [AppointmentController::class, 'store'])->name('appointments.store');
+});
+
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/majors', [MajorController::class, 'index'])->name('majors.all');
 Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
-Route::post('/contact',[ContactController::class,'store'])->name('contact.store');
-Route::view('history', 'site.pages.history')->name('history');
-Route::view('login', 'site.pages.login')->name('login');
-Route::view('register', 'site.pages.register')->name('register');
-Route::get('/doctors', [DoctorController::class, 'index'])->name('doctors.index');
-Route::get('/appointment', [AppointmentController::class, 'index'])->name('appointments.index');
+Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+Route::get('/doctors', [DoctorController::class, 'index'])->name('doctors.all');
+Route::get('/doctors/{doctor}/profile', [DoctorController::class, 'profile'])->name('doctors.profile');
+Route::get('/majors/{major}/doctors', [DoctorController::class, 'show'])->name('majors.doctors');
+
 
 require_once('admin.php');
+require_once('auth.php');

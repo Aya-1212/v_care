@@ -10,18 +10,37 @@
         </ol>
     </nav>
     <div class="doctors-grid">
-        @foreach ($doctors as $doctor)
+        @forelse ($doctors as $doctor)
             <div class="card p-2" style="width: 18rem;">
-                <img src="{{ asset('uploads/doctors/' . $doctor->image) }}"
-                    class="card-img-top rounded-circle card-image-circle" alt="major">
+                <a href="{{ route('doctors.profile', $doctor->id) }}" class="card-img-top rounded-circle card-image-circle"
+                    alt="major">
+                    <img src="{{ asset('uploads/doctors/' . $doctor->image) }}"
+                        class="card-img-top rounded-circle card-image-circle" alt="major"></a>
                 <div class="card-body d-flex flex-column gap-1 justify-content-center">
                     <h4 class="card-title fw-bold text-center">{{ $doctor->name }}</h4>
                     <h6 class="card-title fw-bold text-center">{{ $doctor->major->title }}</h6>
-                    <a href="{{ route('appointments.index') }}" class="btn btn-outline-primary card-button">Book an
+                    <a href="{{ route('doctors.appointments', $doctor->id) }}"
+                        class="btn btn-outline-primary card-button">Book an
                         appointment</a>
                 </div>
             </div>
-        @endforeach
+        @empty
+            <div class="container">
+                <div class="container-fluid bg-light py-5">
+                    <div class="col-md-6 m-auto text-center">
+                        <section class="content-header">
+                            <div class="container-fluid">
+                                <div class="row mb-2">
+                                    <div class="col-sm-6">
+                                        <h4>No Doctors Until Now</h4>
+                                    </div>
+                                </div>
+                            </div><!-- /.container-fluid -->
+                        </section>
+                    </div>
+                </div>
+            </div>
+        @endforelse
 
         {{ $doctors->links() }}
 

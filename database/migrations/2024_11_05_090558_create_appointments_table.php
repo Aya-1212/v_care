@@ -16,8 +16,9 @@ return new class extends Migration
             $table->dateTime("appointment_time");
             $table->foreignId('patient_id')->constrained('users');
             $table->foreignId('doctor_id')->constrained('doctors');
-            // $table->foreign('patient_id')->references('id')->on('users');
-            // $table->foreign('doctor_id')->references('id')->on('doctors');
+            $table->string('name');
+            $table->string('email');
+            $table->string('phone');
             $table->timestamps();
         });
     }
