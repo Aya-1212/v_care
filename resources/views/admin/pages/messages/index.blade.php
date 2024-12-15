@@ -31,7 +31,7 @@
                                 <!-- /.card-header -->
                                 <div class="card-body p-0">
                                     @if (empty($messages->items()))
-                                        <x-empty-state />
+                                        <x-empty-state>{{ 'Messages' }}</x-empty-state>
                                     @else
                                         <table class="table table-sm" style="width: 100%; border: 1px solid #ddd;">
                                             <thead>

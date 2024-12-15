@@ -3,13 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\EditMajorRequest;
 use App\Models\Major;
-use App\Http\Traits\uploadImage;
+use App\Http\Traits\FileSystem;
 use Illuminate\Http\Request;
 
 class MajorController extends Controller
 {
-     use uploadImage;
+    use FileSystem;
 
     public function index()
     {
@@ -23,66 +24,53 @@ class MajorController extends Controller
 
     public function store()
     {
-        // request()->file('image')->store('/majors','custom_disk');
 
-        // dd(request()->file('image')->getClientOriginalName());
-        //////////////////////////////////////////////////////////////////
-
-       $name = time()."_".rand(1,1000000)."_".request()->image->getClientOriginalName();
-       request()->file('image')->storeAS('/majors',$name,'custom_disk');
-       
-       dd($name);
-
-        // dd( request()->all() );
-        // $this->uploadImage('uploads/majors');
         // validations
-        // request()->validate([
-        //     "title" => "required|string|min:6|max:30",
-        //     "image" => "required|image"
-        // ]);
+        request()->validate([
+            "title" => "required|string|min:6|max:30",
+            "image" => "required|image"
+        ]);
 
         // //save image
-        // $image_name = $this->uploadFile('uploads/majors/');
+        $image_name = $this->uploadImage('majors');
 
         // //mass assignment
+        Major::create(
+            [
+                "title" => request()->title,
+                "image" => $image_name,
+            ]
+        );
 
-        // Major::create(
-        //     [
-        //         "title" => request()->title,
-        //         "image" => $image_name,
-        //     ]
-        // );
-
-        // return redirect()->back()->with('success', 'The major has been added');
+        return redirect()->back()->with('success', 'The major has been added');
     }
 
     public function edit(Major $major)
     {
         $major = Major::findOrFail($major->id);
-        return view('admin.pages.majors.edit',compact('major'));
+        return view('admin.pages.majors.edit', compact('major'));
     }
 
-    public function update(Major $major)
+    public function update(EditMajorRequest $request, Major $major)
     {
-         request()->validate([
-            "title" => "required|string|max:30|min:6",
-            "image"=>'required|image'
-         ]);
+        //  dd($request->validated(),$major);
 
-         $major = Major::where('id',$major->id)->first();
-         if($major){
-            //delete image
-            // $this->deletePath('uploads/majors/1730996023_book4.jpg');
-            // dd("uploads/majors/".$major->image);
-            // update major
-            $major->title = request()->title;
-            $image_name = $this->uploadFile('uploads/majors/');
-            $major->image = $image_name;
+        $major = Major::where('id', $major->id)->first();
+        if ($major) {
+            //edit name
+            $major->title = $request->title;
+            // request has image
+            if (isset($request->image)) {
+                $this->deleteImage("/majors" . "/" . $major->image);
+                $image_name = $this->uploadImage('majors');
+                $major->image = $image_name;
+            }
             $major->save();
-            return redirect()->route('majors.edit',$major->id)->with('success','Updated Successfully');
-         }else{
+            return redirect()->route('majors.edit', $major->id)->with('success', 'Updated Successfully');
+        } else {
+            dd('no major');
             return redirect()->back();
-         }
+        }
     }
 
     public function destroy(Major $major)

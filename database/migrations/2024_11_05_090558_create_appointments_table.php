@@ -16,6 +16,7 @@ return new class extends Migration
             $table->dateTime("appointment_time");
             $table->foreignId('patient_id')->constrained('users');
             $table->foreignId('doctor_id')->constrained('doctors');
+            $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending');
             $table->string('name');
             $table->string('email');
             $table->string('phone');

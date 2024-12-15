@@ -17,8 +17,8 @@ class AppointmentController extends Controller
     public function index()
     {
 
-        $appointments = Appointment::with('doctor')->where('patient_id', auth()->user()->id)->get();
-        
+        $appointments = Appointment::with('doctor')->where('patient_id', auth()->user()->id)->paginate(10);
+
         return View('site.pages.appointments.index', compact('appointments'));
     }
 
@@ -30,10 +30,12 @@ class AppointmentController extends Controller
 
     public function store(AppointmentRequest $request)
     {
-        // dd($request->email);
-        $data = array_merge($request->validated(), ['patient_id' => auth()->user()->id,'appointment_time'=> now() ]);
-        Appointment::create($data);
-        Mail::to( $request->email ?? auth()->user()->email )->send( new AppointmentConfirmationMail() );
+        $data = array_merge($request->validated(), ['patient_id' => auth()->user()->id, 'appointment_time' => now()]);
+        $appointment = Appointment::create($data);
+        Mail::to(auth()->user()->email)->send(new AppointmentConfirmationMail(
+            $appointment,
+            auth()->user()->name,
+        ));
         return to_route('home')->with('added', 'Appointment Booked Successfully');
     }
 }

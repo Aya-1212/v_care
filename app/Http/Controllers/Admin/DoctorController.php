@@ -3,15 +3,16 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AddDoctorRequest;
+use App\Http\Traits\FileSystem;
 use App\Models\Major;
 use Illuminate\Http\Request;
 use App\Models\Doctor;
-use App\Http\Traits\uploadImage;
 
 
 class DoctorController extends Controller
 {
-    use uploadImage;
+    use FileSystem;
     /**
      * Display a listing of the resource.
      */
@@ -34,20 +35,27 @@ class DoctorController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(AddDoctorRequest $request)
     {
         // dd($request->all());
-        $request->validate(
-            [
-                'name' => ['required', 'string', 'max:30', 'min:6'],
-                'email' => ['required', 'email',],
-                'location' => ['required', 'url'],
-                'description' => ['required', 'min:20', 'max:120'],
-                'image' => ['required', 'image'],
-            ]
-        );
+        dd($request);
 
-        $image_name = $this->uploadFile('uploads/doctors/');
+
+        $image_name = $this->uploadImage('doctors');
+
+        // // dd($request, $image_name);
+
+
+        // Doctor::create([
+        //     'name' => $request->name,
+        //     'email' => $request->email,
+        //     'image' => $image_name,
+        //     'location' => $request->location,
+        //     'major_id' => $request->major_id,
+        //     'description' => $request->description,
+        // ]);
+        $image_name = $this->uploadImage('doctors');
+        // uploadFile('doctors/');
 
         // dd($request, $image_name);
 

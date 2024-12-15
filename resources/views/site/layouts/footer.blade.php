@@ -12,8 +12,8 @@
             <h1 class="h1">Links</h1>
             <div class="links d-flex gap-2 flex-wrap">
                 <a href="{{ route('home') }}" class="link text-white">Home</a>
-                <a href="{{ route('majors.index') }}" class="link text-white">Majors</a>
-                <a href="./doctors/index.html" class="link text-white">Doctors</a>
+                <a href="{{ route('majors.all') }}" class="link text-white">Majors</a>
+                <a href="{{ route('doctors.all') }}" class="link text-white">Doctors</a>
                 @guest
                     <a href="{{ route('login') }}" class="link text-white">Login</a>
                     <a href="{{ route('auth.register') }}" class="link text-white">Register</a>

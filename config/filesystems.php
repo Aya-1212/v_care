@@ -58,8 +58,8 @@ return [
 
         'custom_disk' => [
             'driver' => 'local',
-            'root' => public_path('db/uploads'),
-            'url' => env('APP_URL') . '/db/uploads',
+            'root' => public_path('uploads'),
+            'url' => env('APP_URL') . '/uploads',
             'visibility' => 'public',
             'throw' => false,
         ],
