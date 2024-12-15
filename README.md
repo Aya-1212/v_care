@@ -32,8 +32,8 @@ It allows patients, doctors, and admins to manage appointments seamlessly.
    git clone https://github.com/Aya-1212/v_care.git
 
 
-2. **Install dependencies:? **
-```bash
+2. Install dependencies:
+
 composer install
 npm install && npm run dev
 
@@ -46,23 +46,23 @@ Update the .env file with your database credentials and email settings.
 
 
 
-4. **Generate application key:**
-```bash
+4. Generate application key:
+
 php artisan key:generate
 
 
-5. **Migrate and seed the database:**
-```bash
+5. Migrate and seed the database:
+
 php artisan migrate --seed
 
 
 6. **Start the server:**
-```bash
+
 php artisan serve
 
 
-7. **Open the application in your browser:**
-```bash
+7. Open the application in your browser:
+
 http://127.0.0.1:8000
 
 
