@@ -32,7 +32,7 @@ It allows patients, doctors, and admins to manage appointments seamlessly.
    git clone https://github.com/Aya-1212/v_care.git
 
 
-2. **Install dependencies:? **
+2. **Install dependencies: **
 ```bash
 composer install
 npm install && npm run dev
