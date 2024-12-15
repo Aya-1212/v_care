@@ -33,7 +33,7 @@ It allows patients, doctors, and admins to manage appointments seamlessly.
 
 
 2. Install dependencies:
-
+```bash
 composer install
 npm install && npm run dev
 
