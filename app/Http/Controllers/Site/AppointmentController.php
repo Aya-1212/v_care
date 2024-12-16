@@ -7,9 +7,6 @@ use App\Http\Requests\AppointmentRequest;
 use App\Mail\AppointmentConfirmationMail;
 use App\Models\Appointment;
 use App\Models\Doctor;
-use Carbon\Traits\Timestamp;
-use Illuminate\Contracts\View\View;
-use Illuminate\Http\Request;
 use Mail;
 
 class AppointmentController extends Controller
